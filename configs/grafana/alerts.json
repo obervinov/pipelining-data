@@ -1,0 +1,1060 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "PDEE91DDB90597936"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "dashed+area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 9.9
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "builderOptions": {
+            "fields": [
+              "timestamp"
+            ],
+            "filters": [],
+            "groupBy": [
+              "ask_1",
+              "bid_1"
+            ],
+            "limit": 100,
+            "metrics": [],
+            "mode": "trend",
+            "orderBy": [],
+            "table": "pipeliningData",
+            "timeField": "timestamp",
+            "timeFieldType": "DateTime64(9)"
+          },
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "meta": {
+            "builderOptions": {
+              "fields": [
+                "timestamp"
+              ],
+              "filters": [],
+              "groupBy": [
+                "ask_1",
+                "bid_1"
+              ],
+              "limit": 100,
+              "metrics": [],
+              "mode": "trend",
+              "orderBy": [],
+              "table": "pipeliningData",
+              "timeField": "timestamp",
+              "timeFieldType": "DateTime64(9)"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_1+bid_1)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_1, bid_1, time ORDER BY time ASC",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_2+bid_2)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_2, bid_2, time ORDER BY time ASC",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_3+bid_3)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_3, bid_3, time ORDER BY time ASC",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_4+bid_4)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_4, bid_4, time ORDER BY time ASC\n",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_5+bid_5)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_5, bid_5, time ORDER BY time ASC\n",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_6+bid_6)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_6, bid_6, time ORDER BY time ASC\n",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_7+bid_7)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_7, bid_7, time ORDER BY time ASC\n",
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_8+bid_8)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_8, bid_8, time ORDER BY time ASC\n",
+          "refId": "H"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_9+bid_9)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_9, bid_9, time ORDER BY time ASC\n",
+          "refId": "I"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_10+bid_10)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_10, bid_10, time ORDER BY time ASC\n",
+          "refId": "J"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_11+bid_11)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_11, bid_11, time ORDER BY time ASC\n",
+          "refId": "K"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 0,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_12+bid_12)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_12, bid_12, time ORDER BY time ASC\n",
+          "refId": "L"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_13+bid_13)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_13, bid_13, time ORDER BY time ASC\n",
+          "refId": "M"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_14+bid_14)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_14, bid_14, time ORDER BY time ASC\n",
+          "refId": "N"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_15+bid_15)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_15, bid_15, time ORDER BY time ASC\n",
+          "refId": "O"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_16+bid_16)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_16, bid_16, time ORDER BY time ASC\n",
+          "refId": "P"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_17+bid_17)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_17, bid_17, time ORDER BY time ASC\n",
+          "refId": "Q"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_18+bid_18)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_18, bid_18, time ORDER BY time ASC\n",
+          "refId": "R"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_19+bid_19)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_19, bid_19, time ORDER BY time ASC\n",
+          "refId": "S"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_20+bid_20)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_20, bid_20, time ORDER BY time ASC\n",
+          "refId": "T"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_21+bid_21)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_21, bid_21, time ORDER BY time ASC\n",
+          "refId": "U"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_22+bid_22)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_22, bid_22, time ORDER BY time ASC\n",
+          "refId": "V"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_23+bid_23)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_23, bid_23, time ORDER BY time ASC\n",
+          "refId": "W"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_24+bid_24)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_24, bid_24, time ORDER BY time ASC\n",
+          "refId": "X"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_25+bid_25)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_25, bid_25, time ORDER BY time ASC\n",
+          "refId": "Y"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_26+bid_26)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_26, bid_26, time ORDER BY time ASC\n",
+          "refId": "Z"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_27+bid_27)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_27, bid_27, time ORDER BY time ASC\n",
+          "refId": "AA"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_28+bid_28)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_28, bid_28, time ORDER BY time ASC\n",
+          "refId": "AB"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_29+bid_29)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_29, bid_29, time ORDER BY time ASC\n",
+          "refId": "AC"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_30+bid_30)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_30, bid_30, time ORDER BY time ASC\n",
+          "refId": "AD"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_31+bid_31)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_31, bid_31, time ORDER BY time ASC\n",
+          "refId": "AE"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_32+bid_32)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_32, bid_32, time ORDER BY time ASC\n",
+          "refId": "AF"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_33+bid_33)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_33, bid_33, time ORDER BY time ASC\n",
+          "refId": "AG"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_34+bid_34)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_34, bid_34, time ORDER BY time ASC\n",
+          "refId": "AH"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_35+bid_35)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_35, bid_35, time ORDER BY time ASC\n",
+          "refId": "AI"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_36+bid_36)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_36, bid_36, time ORDER BY time ASC\n",
+          "refId": "AJ"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_37+bid_37)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_37, bid_37, time ORDER BY time ASC\n",
+          "refId": "AK"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_38+bid_38)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_38, bid_38, time ORDER BY time ASC\n",
+          "refId": "AL"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_39+bid_39)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_39, bid_39, time ORDER BY time ASC\n",
+          "refId": "AM"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_40+bid_40)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_40, bid_40, time ORDER BY time ASC\n",
+          "refId": "AN"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_41+bid_41)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_41, bid_41, time ORDER BY time ASC\n",
+          "refId": "AO"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_42+bid_42)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_42, bid_42, time ORDER BY time ASC\n",
+          "refId": "AP"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_43+bid_43)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_43, bid_43, time ORDER BY time ASC\n",
+          "refId": "AQ"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_44+bid_44)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_44, bid_44, time ORDER BY time ASC\n",
+          "refId": "AR"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_45+bid_45)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_45, bid_45, time ORDER BY time ASC\n",
+          "refId": "AS"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_46+bid_46)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_46, bid_46, time ORDER BY time ASC\n",
+          "refId": "AT"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_47+bid_47)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_47, bid_47, time ORDER BY time ASC\n",
+          "refId": "AU"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_48+bid_48)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_48, bid_48, time ORDER BY time ASC\n",
+          "refId": "AV"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_49+bid_49)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_49, bid_49, time ORDER BY time ASC",
+          "refId": "AW"
+        },
+        {
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "PDEE91DDB90597936"
+          },
+          "format": 1,
+          "hide": false,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(timestamp) as time, (ask_50+bid_50)/2 FROM pipeliningData WHERE $__timeFilter(timestamp) GROUP BY ask_50, bid_50, time ORDER BY time ASC",
+          "refId": "AX"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "alerting",
+  "uid": "MGcbjPFVz",
+  "version": 1,
+  "weekStart": ""
+}
