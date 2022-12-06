@@ -127,14 +127,14 @@ Reading data from Kafka and further saving to the database is implemented accord
 </p>
 
 ### Grafana
-The graph is needed in this project to build monitoring based on data stored in clickhouse.
+The grafana is needed in this project to build monitoring based on data stored in clickhouse.
 
 A graph that is already ready for operation is configured using [provisioning](https://grafana.com/docs/grafana/latest/administration/provisioning/):
 - [Configuration of datasource provisioning](configs/grafana/datasource.yaml)
 - [Configuration of dashboard provisioning](configs/grafana/dashboard.yaml)
 - [Json model of the finished dashboard](configs/grafana/alerts.json)
 
-The url of the garfana that is available after launching all services in docker-compose: http://0.0.0.0:3000
+The url of the grafana that is available after launching all services in docker-compose: http://0.0.0.0:3000
 **Attention, charting may take several minutes!**
 <p align="center">
   <img src="doc/grafana.png" width="750" title="grafana">
