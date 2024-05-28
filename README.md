@@ -6,7 +6,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/obervinov/pipelining-data?style=for-the-badge)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/instaloader?style=for-the-badge)
 
-## <img src="https://github.com/obervinov/content/blob/main/ico/1945958.png" width="25" title="about"> About this project
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/book.png" width="25" title="about"> About this project
 This project is a test task for creating a data pipeline. And it is a miniature stand.<br></br>
 The project consists of four components:
 - A utility written in **python** to generate test data and send it to kafka
@@ -17,14 +17,14 @@ The project consists of four components:
   <img src="doc/pygenerator.png" width="850" title="pygenerator">
 </p>
 
-## Algorithm of operation
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/build.png" width="25" title="describe"> Algorithm of operation
 1. The **python** service generates data according to the test task and sends it to apache kafka with the interval `CREATE_REPORT_INTERVAL`.
 2. **Apache kafka** acts as an intermediate data bus and lines up a queue in front of clickhouse.
 3. **Clickhouse** uses the `Kafka engine` to subtract data from kafka and save it to a table with the `MergeTree engine`.
 4. **Grafana** fetches BID and ASK data from clickhouse according to the formula `(ask_01 + bid_01) / 2`. The threshold is set to exceed the limit of `9.9`
 
 
-## <img src="https://github.com/obervinov/content/blob/main/ico/7711245.png" width="25" title="map"> Repository map
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/stack.png" width="25" title="map"> Repository map
 ```sh
 .
 ├── CHANGELOG.md
@@ -48,15 +48,15 @@ The project consists of four components:
     └── main.py              ## The main mod for initializing dependent classes and extracting environment variables
 ```
 
-## <img src="https://github.com/obervinov/content/blob/main/ico/8823344.png" width="25" title="requirements"> Requirements
-- <img src="https://github.com/obervinov/content/blob/main/ico/kafka.png" width="15" title="Kafka-ico"> Apache kafka + Zookeeper - [queue broker](https://hub.docker.com/r/bitnami/kafka) and [coordinator for kafka](https://hub.docker.com/r/bitnami/zookeeper)
-- <img src="https://github.com/obervinov/content/blob/main/ico/kafka-ui.png" width="15" title="Kafka-ui-ico"> Kafka-ui - [UI for data visualization in kafka](https://github.com/provectus/kafka-ui)
-- <img src="https://github.com/obervinov/content/blob/main/ico/clickhouse.png" width="15" title="Clickhouse-ico"> Clickhouse - [persistent data storage](https://hub.docker.com/r/yandex/clickhouse-server)
-- <img src="https://github.com/obervinov/content/blob/main/ico/grafana.webp" width="15" title="Grafana-ico"> Grafana - [fetching data from a database for monitoring values](https://hub.docker.com/r/grafana/grafana)
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/requirements.png" width="25" title="requirements"> Requirements
+- <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/kafka.png" width="15" title="Kafka-ico"> Apache kafka + Zookeeper - [queue broker](https://hub.docker.com/r/bitnami/kafka) and [coordinator for kafka](https://hub.docker.com/r/bitnami/zookeeper)
+- <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/kafka-ui.png" width="15" title="Kafka-ui-ico"> Kafka-ui - [UI for data visualization in kafka](https://github.com/provectus/kafka-ui)
+- <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/clickhouse.png" width="15" title="Clickhouse-ico"> Clickhouse - [persistent data storage](https://hub.docker.com/r/yandex/clickhouse-server)
+- <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/grafana.webp" width="15" title="Grafana-ico"> Grafana - [fetching data from a database for monitoring values](https://hub.docker.com/r/grafana/grafana)
 
 
 
-## Environment variables
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/config.png" width="25" title="requirements"> Environment variables
 
 | Variable  | Service | Description | Default |
 | ------------- | ------------- | ------------- | ------------- |
@@ -78,7 +78,7 @@ The project consists of four components:
 | `KAFKA_TOPIC` | **pygenerator** | The name of the kafka topic for transmitting the generated data | `metrics_raw` |
 
 
-## <img src="https://github.com/obervinov/content/blob/main/ico/2366710.png" width="25" title="docker"> How to run with docker-compose
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/docker.png" width="25" title="docker"> How to run with docker-compose
 1. Building and launching of all necessary services
 ```sh
 docker-compose up -d
@@ -88,7 +88,7 @@ docker-compose up -d
 docker logs -f pygenerator
 ```
 
-## <img src="https://github.com/obervinov/content/blob/main/ico/8840892.png" width="25" title="locally"> Description of components and important parts
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/build.png" width="25" title="locally"> Description of components and important parts
 ### Python service
 Additional external modules are required for the service to work in python:
 - [kafka-python](https://kafka-python.readthedocs.io/en/master/) to send the generated data to kafka
@@ -140,7 +140,7 @@ The url of the grafana that is available after launching all services in docker-
   <img src="doc/grafana.png" width="750" title="grafana">
 </p>
 
-## <img src="https://github.com/obervinov/content/blob/main/ico/7264022.png" width="25" title="build"> How to build a docker image with a python service
+## <img src="https://github.com/obervinov/_templates/blob/v1.2.2/icons/build.png" width="25" title="build"> How to build a docker image with a python service
 ```sh
 export APP_VERSION=v1.0.0
 export APP_NAME="pipelining-data"
